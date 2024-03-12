@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html,
+        body,
+        :root {
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="h-full w-full">
+{% block content %}
+{% endblock %}
+</body>
+</html>

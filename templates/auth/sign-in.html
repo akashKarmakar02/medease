@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}MedEase - Sign in{% endblock %}
+
+{% block content %}
+    <div class="h-full max-w-screen-2xl mx-auto">
+        <div class="h-full w-full flex justify-center items-center">
+            <form method="post" class="shadow-xl px-5 py-6 rounded-lg w-96 border">
+                {% csrf_token %}
+                <h1 class="text-2xl font-semibold mb-4">Sign in to MedEase</h1>
+                <label class="mb-6">
+                    <span>Email</span>
+                    <input type="email" required name="username"
+                           class="mb-5 mt-1 border border-black border-1 px-2 outline-none rounded-md w-full ring-offset-2 h-10 focus:ring-2 focus:ring-black">
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" required name="password"
+                           class="mb-5 mt-1 border border-black border-1 px-2 outline-none rounded-md w-full ring-offset-2 h-10 focus:ring-2 focus:ring-black">
+                </label>
+                {% if error_message %}
+                    <div class="bg-red-500 rounded-lg w-full mb-5 px-5 py-3">
+                        <div class="text-white flex items-center gap-x-2">
+                            <div class="w-6 h-6">
+                                <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 478.125 478.125"
+                                     xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier"> <g> <g> <g> <circle cx="239.904" cy="314.721"
+                                                                                     r="35.878"></circle>
+                                        <path d="M256.657,127.525h-31.9c-10.557,0-19.125,8.645-19.125,19.125v101.975c0,10.48,8.645,19.125,19.125,19.125h31.9 c10.48,0,19.125-8.645,19.125-19.125V146.65C275.782,136.17,267.138,127.525,256.657,127.525z"></path>
+                                        <path d="M239.062,0C106.947,0,0,106.947,0,239.062s106.947,239.062,239.062,239.062c132.115,0,239.062-106.947,239.062-239.062 S371.178,0,239.062,0z M239.292,409.734c-94.171,0-170.595-76.348-170.595-170.596c0-94.248,76.347-170.595,170.595-170.595 s170.595,76.347,170.595,170.595C409.887,333.387,333.464,409.734,239.292,409.734z"></path> </g> </g> </g> </g></svg>
+                            </div>
+                            <span>{{ error_message }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+                <button type="submit"
+                        class="mb-2 w-full bg-blue-400 h-10 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-500">
+                    Log in
+                </button>
+                <div class="text-slate-700 text-sm">Don't have an account? <a href="/auth/sign-up" class="text-blue-600 hover:underline">Sign up</a></div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
