@@ -6,13 +6,20 @@ from .forms import SignUpForm, SignInForm
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST, request.FILES)
+        print(form.data)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.save()
-            return redirect('/')
+            if form.cleaned_data.get('confirm_password') == form.cleaned_data.get('password'):
+                user = form.save(commit=False)
+                user.save()
+                return redirect('/')
+            else:
+                return render(request, 'auth/sign-up.html', {
+                    'form': form,
+                    'error': "Password must be same."
+                })
     else:
         form = SignUpForm()
-    print(form.as_p())
+    print(form.errors)
     return render(request, 'auth/sign-up.html', {
         'form': form
     })
