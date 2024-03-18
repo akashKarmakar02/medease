@@ -90,7 +90,7 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com', 'https://*.vercel.app']
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
